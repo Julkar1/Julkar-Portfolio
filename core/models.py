@@ -1,17 +1,18 @@
-from distutils.command.upload import upload
-from email.mime import image
-from email.policy import default
-from sre_parse import Verbose
-from tabnanny import verbose
-from turtle import title
-from unicodedata import name
+# from distutils.command.upload import upload
+# from email.mime import image
+# from email.policy import default
+# from sre_parse import Verbose
+# from tabnanny import verbose
+# from turtle import title
+# from unicodedata import name
 from django.db import models
+
 
 # About Model
 class About(models.Model):
     short_description = models.TextField()
     description = models.TextField()
-    image = models.ImageField(upload_to="about") #upload
+    image = models.ImageField(upload_to="about")
 
     class Meta:
         verbose_name = "About me"
@@ -20,7 +21,8 @@ class About(models.Model):
     def __str__(self):
         return "About me"
 
-#Service Model
+
+# Service Model
 class Service(models.Model):
     name = models.CharField(max_length=100, verbose_name="Service name")
     description = models.TextField(verbose_name="About Service")
@@ -28,19 +30,21 @@ class Service(models.Model):
     def __str__(self):
         return self.name
 
-#Recent Work Model
+
+# Recent Work Model
 class RecentWork(models.Model):
     title = models.CharField(max_length=100, verbose_name="Work title")
     image = models.ImageField(upload_to="works")
-    
-    def __str__(self):       #  def __str__(self) -> str:
-        return self.title    #      return super().__str__()
 
-#Client Model
+    def __str__(self):
+        return self.title
+
+
+# Client Model
 class Client(models.Model):
     name = models.CharField(max_length=100, verbose_name="Client name")
     description = models.TextField(verbose_name="Client say")
-    image = models.ImageField(upload_to="Clients",default="default.png")
+    image = models.ImageField(upload_to="clients", default="default.png")
 
     def __str__(self):
         return self.name
